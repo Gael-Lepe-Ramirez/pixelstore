@@ -29,6 +29,13 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
+        ], [
+            'category_id.required' => 'Por favor, selecciona una categoría para el equipo o componente.',
+            'name.required' => 'El nombre del artículo es obligatorio.',
+            'description.required' => 'Debes incluir una descripción técnica.',
+            'price.required' => 'El precio es obligatorio.',
+            'price.numeric' => 'El precio debe ser un número válido.',
+            'stock.required' => 'Ingresa el stock inicial disponible.',
         ]);
 
         $validated['slug'] = Str::slug($request->name);

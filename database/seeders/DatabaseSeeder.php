@@ -2,26 +2,31 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
-{
-    \App\Models\Category::factory(10)
-        ->hasProducts(5)
-        ->create();
+    {
+        $categorias = [
+            'Laptops y Equipos Armados',
+            'Monitores y Pantallas',
+            'Componentes de PC',
+            'Accesorios y Periféricos',
+            'Consolas y Videojuegos',
+            'Herramientas y Refacciones'
+        ];
 
-    \App\Models\User::factory()->create([
-        'name' => 'Admin PixelStore',
-        'email' => 'admin@pixelstore.com',
-    ]);
-}
+        foreach ($categorias as $nombre) {
+            \App\Models\Category::factory()->hasProducts(5)->create([
+                'name' => $nombre,
+                'slug' => str($nombre)->slug(),
+            ]);
+        }
+
+        \App\Models\User::factory()->create([
+            'name' => 'Admin PixelStore',
+            'email' => 'admin@pixelstore.com',
+        ]);
+    }
 }
