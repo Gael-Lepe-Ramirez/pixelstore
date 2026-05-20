@@ -25,7 +25,7 @@
       <div class="col-md-8 mx-auto">
         <div class="contact-form bg-light p-4 rounded shadow-sm">
           
-          <form action="{{ route('products.store') }}" method="POST">
+          <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="row">
@@ -80,6 +80,13 @@
                 <a href="{{ route('products.index') }}" class="btn btn-outline-secondary px-4 py-2" style="border-radius: 20px;">
                   Cancelar
                 </a>
+                <div class="col-lg-12 form-group">
+                    <label for="image" class="font-weight-bold text-dark">Fotografía del Componente</label>
+                    <input name="image" type="file" class="form-control-file @error('image') is-invalid @enderror" id="image" accept="image/*">
+                    @error('image')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                </div>
                 <button type="submit" id="form-submit" class="filled-button">
                   Guardar Producto
                 </button>

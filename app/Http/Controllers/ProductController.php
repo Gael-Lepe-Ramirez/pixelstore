@@ -29,6 +29,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
+            'image' => 'nullable|image|max:2048', // Validación de la imagen (máx 2MB)
         ], [
             'category_id.required' => 'Por favor, selecciona una categoría para el equipo o componente.',
             'name.required' => 'El nombre del artículo es obligatorio.',
@@ -36,11 +37,18 @@ class ProductController extends Controller
             'price.required' => 'El precio es obligatorio.',
             'price.numeric' => 'El precio debe ser un número válido.',
             'stock.required' => 'Ingresa el stock inicial disponible.',
+            'image.image' => 'El archivo debe ser una imagen válida (jpeg, png, bmp, gif, svg, o webp).',
+            'image.max' => 'La imagen no debe pesar más de 2MB.',
         ]);
 
-        $validated['slug'] = Str::slug($request->name);
+        $validated['slug'] = \Illuminate\Support\Str::slug($request->name);
 
-        Product::create($validated);
+        $product = Product::create($validated);
+
+        if ($request->hasFile('image')) {
+            $ruta = $request->file('image')->store('productos', 'public');
+            $product->image()->create(['url' => $ruta]);
+        }
 
         return redirect()->route('products.index');
     }

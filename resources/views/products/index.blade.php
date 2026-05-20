@@ -29,7 +29,13 @@
       @foreach($products as $product)
       <div class="col-md-4 col-sm-6 mb-4">
         <div class="product-item">
-          <a href="#"><img src="{{ asset('assets/images/product_01.jpg') }}" alt="{{ $product->name }}"></a>
+          <a href="#">
+            @if($product->image)
+              <img src="{{ asset('storage/' . $product->image->url) }}" alt="{{ $product->name }}" style="height: 250px; object-fit: cover; width: 100%;">
+            @else
+              <img src="{{ asset('assets/images/product_01.jpg') }}" alt="Imagen no disponible" style="height: 250px; object-fit: cover; width: 100%;">
+            @endif
+          </a>
           <div class="down-content">
             <a href="#">
               <h4>{{ Str::limit($product->name, 20) }}</h4>
