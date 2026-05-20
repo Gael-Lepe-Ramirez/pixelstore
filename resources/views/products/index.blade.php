@@ -44,6 +44,16 @@
             <p class="text-muted" style="height: 60px; overflow: hidden;">
               {{ Str::limit($product->description, 80) }}
             </p>
+            
+            <p class="text-muted" style="height: 60px; overflow: hidden;">
+              {{ Str::limit($product->description, 80) }}
+            </p>
+            <form action="{{ route('cart.add', $product->id) }}" method="POST" class="mt-2 mb-3">
+                @csrf
+                <button type="submit" class="btn btn-danger btn-block text-white" style="border-radius: 20px;">
+                    Agregar al Carrito
+                </button>
+            </form>
             <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
                 <span class="badge badge-secondary">Stock: {{ $product->stock }}</span>
                 <div class="btn-group">

@@ -30,12 +30,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('/') }}">Inicio</a>
-              </li> 
               <li class="nav-item {{ request()->is('products*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('products.index') }}">Productos</a>
               </li>
+              
+              <li class="nav-item {{ request()->is('carrito*') ? 'active' : '' }}">
+                <a class="nav-link font-weight-bold text-danger" href="{{ route('cart.index') }}">Mi Carrito</a>
+              </li>
+
               @auth
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}" class="d-inline">
