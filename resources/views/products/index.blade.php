@@ -76,13 +76,15 @@
     }
 </style>
 
-<div class="page-heading products-heading header-text">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="text-content">
-          <h4>PixelStore</h4>
-          <h2>Nuestro Catálogo de Productos</h2>
+<div class="banner header-text mt-0">
+  <div class="banner-item" style="background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url({{ asset('assets/images/main-banner.jpg') }}); background-size: cover; background-position: center; padding: 180px 0px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-content text-center">
+            <h4 class="text-uppercase" style="color: #f33f3f; font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 15px;">Bienvenido a PixelStore</h4>
+            <h2 style="color: #fff; font-size: 3.5rem; font-weight: 700; text-transform: uppercase;">Componentes y Hardware de Gama Alta</h2>
+          </div>
         </div>
       </div>
     </div>
