@@ -88,7 +88,8 @@ class OrderController extends Controller
         // 4. Vaciar el carrito
         session()->forget('cart');
 
-        return redirect()->route('products.index');
+        // Redirigir a la pantalla de agradecimiento
+        return redirect()->route('orders.success', $order->id);
     }
 
     public function downloadPDF(\App\Models\Order $order)
@@ -98,10 +99,19 @@ class OrderController extends Controller
             abort(403, 'No tienes permiso para ver este recibo.');
         }
 
-        // Cargamos la vista del PDF con los datos de la orden
+        // Cargar la vista del PDF con los datos de la orden
         $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('orders.pdf', compact('order'));
         
-        // Retornamos el archivo para su descarga directa
+        // Retornar el archivo para su descarga directa
         return $pdf->download('recibo_pixelstore_' . $order->id . '.pdf');
+    }
+
+    public function success(\App\Models\Order $order)
+    {
+        if ($order->user_id !== auth()->id() && auth()->user()->role !== 'admin') {
+            abort(403, 'Acceso denegado.');
+        }
+
+        return view('orders.success', compact('order'));
     }
 }

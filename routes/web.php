@@ -39,4 +39,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/carrito/remover/{id}', [OrderController::class, 'remove'])->name('cart.remove');
     Route::post('/comprar', [OrderController::class, 'checkout'])->name('cart.checkout');
     Route::get('/orders/{order}/pdf', [App\Http\Controllers\OrderController::class, 'downloadPDF'])->name('orders.pdf');
+    Route::get('/orders/{order}/success', [OrderController::class, 'success'])->name('orders.success');
 });

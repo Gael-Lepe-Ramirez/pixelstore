@@ -94,7 +94,7 @@
                 <span class="cart-total mr-4">${{ number_format($total, 2) }}</span>
                 <form action="{{ route('cart.checkout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="filled-button" style="border-radius: 8px;">
+                    <button type="submit" class="btn btn-dark font-weight-bold px-4 py-2 shadow-sm text-uppercase" style="border-radius: 8px; letter-spacing: 1px; cursor: pointer;">
                         Confirmar Compra
                     </button>
                 </form>
