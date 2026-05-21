@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderReceipt;
 
 class OrderController extends Controller
 {
@@ -71,7 +73,8 @@ class OrderController extends Controller
         foreach ($cart as $id => $details) {
             $order->products()->attach($id, [
                 'quantity' => $details['quantity'],
-                'price' => $details['price']
+                'price' => $details['price'],
+                'unit_price' => $details['price']
             ]);
             
             // Opcional: Descontar del stock real
@@ -79,7 +82,10 @@ class OrderController extends Controller
             $product->decrement('stock', $details['quantity']);
         }
 
-        // 3. Vaciar el carrito
+        // 3. Enviar el recibo por correo electrónico
+        Mail::to(auth()->user()->email)->send(new OrderReceipt($order));
+
+        // 4. Vaciar el carrito
         session()->forget('cart');
 
         return redirect()->route('products.index');

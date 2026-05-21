@@ -18,10 +18,10 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function products(): BelongsToMany
+    public function products()
     {
         return $this->belongsToMany(Product::class)
-            ->withPivot('quantity', 'unit_price')
-            ->withTimestamps();
+                    ->withPivot('quantity', 'price', 'unit_price')
+                    ->withTimestamps();
     }
 }
