@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Admin PixelStore',
             'email' => 'admin@pixelstore.com',
+            'role' => 'admin',
         ]);
     }
 }

@@ -95,9 +95,11 @@
       <div class="col-md-12">
         <div class="section-heading d-flex justify-content-between align-items-center">
           <h2>Productos Disponibles</h2>
+          @can('admin')
           <a href="{{ route('products.create') }}" class="filled-button text-white" style="border-radius: 8px; color: #ffffff !important;">
             + Agregar Nuevo
           </a>
+          @endcan
         </div>
       </div>
       
@@ -129,6 +131,7 @@
               <span class="badge {{ $product->stock > 0 ? 'badge-light text-dark' : 'badge-danger' }} p-2" style="border-radius: 6px;">
                 Stock: {{ $product->stock }}
               </span>
+              @can('admin')
               <div class="btn-group">
                 <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-outline-secondary" style="border-top-left-radius: 6px; border-bottom-left-radius: 6px;">
                   <i class="fa fa-edit"></i> Editar
@@ -141,6 +144,7 @@
                     </button>
                 </form>
               </div>
+              @endcan
             </div>
           </div>
 
