@@ -90,4 +90,18 @@ class OrderController extends Controller
 
         return redirect()->route('products.index');
     }
+
+    public function downloadPDF(\App\Models\Order $order)
+    {
+        // Seguridad: Verificar que el usuario sea el dueño de la compra o el admin
+        if ($order->user_id !== auth()->id() && auth()->user()->role !== 'admin') {
+            abort(403, 'No tienes permiso para ver este recibo.');
+        }
+
+        // Cargamos la vista del PDF con los datos de la orden
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('orders.pdf', compact('order'));
+        
+        // Retornamos el archivo para su descarga directa
+        return $pdf->download('recibo_pixelstore_' . $order->id . '.pdf');
+    }
 }
