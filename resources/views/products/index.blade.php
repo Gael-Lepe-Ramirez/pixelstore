@@ -154,6 +154,10 @@
       </div>
       @endforeach
 
+      <div class="col-md-12 mt-5 mb-4 d-flex justify-content-center">
+          {{ $products->appends(['search' => request('search')])->links() }}
+      </div>
+
     </div>
   </div>
 </div>
