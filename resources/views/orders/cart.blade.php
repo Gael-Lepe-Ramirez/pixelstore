@@ -23,17 +23,17 @@
     }
 </style>
 
-<div class="page-heading products-heading header-text">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="text-content">
-          <h4>Tu Orden</h4>
-          <h2>Carrito de Compras</h2>
+<div class="page-heading header-text" style="background-image: linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.75)), url('{{ asset('storage/productos/banner-carrito.jpg') }}'); background-size: cover; background-position: center; padding: 160px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-content text-center">
+                    <h4 style="color: #f33f3f; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">Tu Orden</h4>
+                    <h2 style="color: #fff; font-size: 46px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase;">Carrito de Compras</h2>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <div class="send-message mb-5">
