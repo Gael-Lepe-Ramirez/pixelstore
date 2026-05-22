@@ -39,15 +39,25 @@
               </li>
 
               @auth
-                <li class="nav-item">
-                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                        @csrf
-                        <a class="nav-link" href="#" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
-                    </form>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f33f3f !important;">
+                        <i class="fa fa-user mr-1"></i> {{ auth()->user()->name }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow border-0" aria-labelledby="userDropdown" style="border-radius: 8px;">
+                        <form method="POST" action="{{ route('logout') }}" class="mb-0">
+                            @csrf
+                            <button type="submit" class="dropdown-item text-danger font-weight-bold py-2" style="cursor: pointer; background: none; border: none; width: 100%; text-align: left;">
+                                <i class="fa fa-sign-out mr-2"></i> Cerrar Sesión
+                            </button>
+                        </form>
+                    </div>
                 </li>
               @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Ingresar</a>
+                    <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
                 </li>
               @endauth
             </ul>

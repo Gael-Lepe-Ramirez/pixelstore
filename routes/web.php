@@ -23,6 +23,9 @@ require __DIR__.'/auth.php';
 
 // Rutas públicas (Cualquier persona puede ver el catálogo)
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+// Rutas para Autenticación con GitHub
+Route::get('/auth/github/redirect', [App\Http\Controllers\Auth\OAuthController::class, 'redirect'])->name('auth.github');
+Route::get('/auth/github/callback', [App\Http\Controllers\Auth\OAuthController::class, 'callback']);
 
 // Rutas protegidas (Solo el 'admin' puede administrar inventario)
 Route::middleware(['auth', 'can:admin'])->group(function () {
