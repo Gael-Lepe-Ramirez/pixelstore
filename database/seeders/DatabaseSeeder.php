@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
         // Producto 3: RAM Kingston FURY DDR5
         $prod3 = Product::create([
             'category_id' => Category::where('name', 'Componentes de PC')->first()->id,
-            'name' => 'Memoria RAM Kingston FURY Beast DDR5 16GB',
+            'name' => 'Memoria RAM Kingston FURY DDR5 16GB',
             'slug' => 'memoria-ram-kingston-fury-beast-ddr5-16gb',
             'description' => 'Módulo de memoria de última generación a 5200MHz con disipador de calor de bajo perfil para un rendimiento extremo en multitarea.',
             'price' => 2399.00,

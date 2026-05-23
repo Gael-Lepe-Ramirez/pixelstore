@@ -97,11 +97,11 @@
       <div class="col-md-12">
         <div class="section-heading d-flex justify-content-between align-items-center">
           <h2>Productos Disponibles</h2>
-          @can('admin')
+          @if(auth()->check() && auth()->user()->role === 'admin')
           <a href="{{ route('products.create') }}" class="filled-button text-white" style="border-radius: 8px; color: #ffffff !important;">
             + Agregar Nuevo
           </a>
-          @endcan
+          @endif
         </div>
       </div>
       
@@ -113,7 +113,7 @@
             @if($product->image)
               <img src="{{ asset('storage/' . $product->image->url) }}" alt="{{ $product->name }}" class="product-img">
             @else
-              <img src="{{ asset('assets/images/product_01.jpg') }}" alt="Imagen no disponible" class="product-img">
+              <img src="{{ asset('storage/productos/generico.jpg') }}" alt="Imagen genérica" class="product-img">
             @endif
           </div>
           
@@ -133,7 +133,7 @@
               <span class="badge {{ $product->stock > 0 ? 'badge-light text-dark' : 'badge-danger' }} p-2" style="border-radius: 6px;">
                 Stock: {{ $product->stock }}
               </span>
-              @can('admin')
+              @if(auth()->check() && auth()->user()->role === 'admin')
               <div class="btn-group">
                 <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-outline-secondary" style="border-top-left-radius: 6px; border-bottom-left-radius: 6px;">
                   <i class="fa fa-edit"></i> Editar
@@ -146,7 +146,7 @@
                     </button>
                 </form>
               </div>
-              @endcan
+              @endif
             </div>
           </div>
 

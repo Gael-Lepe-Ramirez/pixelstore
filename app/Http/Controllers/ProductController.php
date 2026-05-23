@@ -33,14 +33,15 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:products,name', // <-- REGLA AGREGADA AQUÍ
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
-            'image' => 'nullable|image|max:2048', // Validación de la imagen (máx 2MB)
+            'image' => 'nullable|image|max:2048', 
         ], [
             'category_id.required' => 'Por favor, selecciona una categoría para el equipo o componente.',
             'name.required' => 'El nombre del artículo es obligatorio.',
+            'name.unique' => 'Ya existe un producto registrado con este nombre. Por favor, sé más específico.',
             'description.required' => 'Debes incluir una descripción técnica.',
             'price.required' => 'El precio es obligatorio.',
             'price.numeric' => 'El precio debe ser un número válido.',
@@ -71,7 +72,8 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
-            'name' => 'required|string|max:255',
+            // <-- REGLA AGREGADA AQUÍ (ignora el ID actual)
+            'name' => 'required|string|max:255|unique:products,name,' . $product->id, 
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
@@ -79,6 +81,7 @@ class ProductController extends Controller
         ], [
             'category_id.required' => 'Por favor, selecciona una categoría para el equipo o componente.',
             'name.required' => 'El nombre del artículo es obligatorio.',
+            'name.unique' => 'Ya existe un producto registrado con este nombre. Por favor, elige otro o edita el existente.',
             'description.required' => 'Debes incluir una descripción técnica.',
             'price.required' => 'El precio es obligatorio.',
             'price.numeric' => 'El precio debe ser un número válido.',

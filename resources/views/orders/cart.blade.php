@@ -23,7 +23,7 @@
     }
 </style>
 
-<div class="page-heading header-text" style="background-image: linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.75)), url('{{ asset('storage/productos/banner-carrito.jpg') }}'); background-size: cover; background-position: center; padding: 160px 0px;">
+<div class="page-heading header-text" style="background-image: linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.75)), url('{{ asset('assets/images/banner-carrito.jpg') }}'); background-size: cover; background-position: center; padding: 160px 0px;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
