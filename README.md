@@ -34,7 +34,7 @@ Ejecuta el siguiente bloque para generar los accesos a las imágenes, poblar los
     php artisan migrate:fresh --seed
 
 **Paso 4: Acceso a la tienda**
-* Si usas Laravel Herd (o dominio personalizado): Accede a http://pixelstore.test
+* Si usas Laravel Herd (o dominio personalizado): Accede a http://pixelstore.test/products
 * Si usas terminal: Ejecuta `php artisan serve` y accede a http://localhost:8000
 
 ---
