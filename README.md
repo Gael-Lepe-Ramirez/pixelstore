@@ -15,12 +15,12 @@ Elige el método que prefieras:
 * HTTPS: https://github.com/Gael-Lepe-Ramirez/pixelstore.git
 
     git clone <ENLACE_ELEGIDO>
-    cd pixelstore
-    composer install
-    npm install
-    npm run build
-    cp .env.example .env
-    php artisan key:generate
+    cd pixelstore ,
+    composer install ,
+    npm install ,
+    npm run build ,
+    cp .env.example .env ,
+    php artisan key:generate ,
 
 **Paso 2: Configurar la base de datos**
 1. Abre tu gestor de base de datos (phpMyAdmin, TablePlus, DBeaver, etc.) y crea una base de datos vacía llamada "pixelstore".
